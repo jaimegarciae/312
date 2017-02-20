@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jaimegarciae/Documents/312/Projects/Project2/MatrixMultiply.h
+
+/home/jaimegarciae/Documents/312/Projects/Project2/Project2.cpp
+stdio.h
+-
+stdint.h
+-
+MatrixMultiply.h
+/home/jaimegarciae/Documents/312/Projects/Project2/MatrixMultiply.h
+stdlib.h
+-
+
+/home/jaimegarciae/Documents/312/Projects/Project2/main.cpp
+assert.h
+-
+math.h
+-
+stdint.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+MatrixMultiply.h
+/home/jaimegarciae/Documents/312/Projects/Project2/MatrixMultiply.h
+

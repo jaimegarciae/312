@@ -1,0 +1,79 @@
+/*
+ * UT EID: jeg3954
+ * Name: Jaime Eugenio Garcia
+ */
+======
+Paste your output at here:
+	I ran 3 tests: one where start>end, one where start<end, and one where start = end
+	The output of each of the 3 cases in respective order is included below
+
+TEST 1: start > end
+
+jgarcia6@kamek (/home/ecelrc/students/jgarcia6/312/Lab3) % valgrind ./a.out
+==12914== Memcheck, a memory error detector
+==12914== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==12914== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==12914== Command: ./a.out
+==12914== 
+This Program will create the array: [start ... end]
+Please Input your Start Number: 3
+Please Input your End Number: 2
+ 
+ 
+==12914== 
+==12914== HEAP SUMMARY:
+==12914==     in use at exit: 0 bytes in 0 blocks
+==12914==   total heap usage: 1 allocs, 1 frees, 0 bytes allocated
+==12914== 
+==12914== All heap blocks were freed -- no leaks are possible
+==12914== 
+==12914== For counts of detected and suppressed errors, rerun with: -v
+==12914== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+
+
+TEST 2: start < end
+
+jgarcia6@kamek (/home/ecelrc/students/jgarcia6/312/Lab3) % valgrind ./a.out
+==13076== Memcheck, a memory error detector
+==13076== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==13076== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==13076== Command: ./a.out
+==13076== 
+This Program will create the array: [start ... end]
+Please Input your Start Number: 1
+Please Input your End Number: 10
+1 2 3 4 5 6 7 8 9 10  
+ 
+==13076== 
+==13076== HEAP SUMMARY:
+==13076==     in use at exit: 0 bytes in 0 blocks
+==13076==   total heap usage: 1 allocs, 1 frees, 40 bytes allocated
+==13076== 
+==13076== All heap blocks were freed -- no leaks are possible
+==13076== 
+==13076== For counts of detected and suppressed errors, rerun with: -v
+==13076== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+
+
+TEST 3: start = end
+
+jgarcia6@kamek (/home/ecelrc/students/jgarcia6/312/Lab3) % valgrind ./a.out
+==13336== Memcheck, a memory error detector
+==13336== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==13336== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==13336== Command: ./a.out
+==13336== 
+This Program will create the array: [start ... end]
+Please Input your Start Number: 2
+Please Input your End Number: 2
+2  
+ 
+==13336== 
+==13336== HEAP SUMMARY:
+==13336==     in use at exit: 0 bytes in 0 blocks
+==13336==   total heap usage: 1 allocs, 1 frees, 4 bytes allocated
+==13336== 
+==13336== All heap blocks were freed -- no leaks are possible
+==13336== 
+==13336== For counts of detected and suppressed errors, rerun with: -v
+==13336== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

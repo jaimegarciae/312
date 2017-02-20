@@ -1,0 +1,47 @@
+Jaime Eugenio Garcia JEG3954
+
+Test Plan
+
+Test1: provided in assignment
+
+Test2: emptyArray
+Purpose: To check if the program works properly when the array it receives is empty
+What is tested: Logic behind the storing and printing of array values
+Setup: Store 999 in a file named test2_In.tx and expected output (a new line) on a file named test2_ExpOut.txt
+Running the test: Run "make test2" on command line
+Check pass/fail: Compare generated output file with expected output file using diff command on bash
+
+Test3: boundaryTest
+Purpose: To check that the program properly allocates memory and stores values correctly when it receives 10 numbers as input (original memory allocation size)
+What is tested: Memory allocation and storage of values
+Setup: Store 10 numbers (other than 999) followed by 999 (each number must be in a new line) on a file named test3_In.txt and expected output (numbers in reversed order separated by tabs) on a file named test3_ExpOut.txt
+Running the test: Run "make test3" on command line
+Check pass/fail: Compare generated output file with expected output file using diff command on bash
+
+Test4: overBoundary
+Purpose: To check that the program correctly does memory reallocation and liberation after needing to increase array size
+What is tested: Memory reallocation and liberation
+Setup: Store 11 numbers (other than 999) followed by 999 (each number must be in a new line) on a file named test4_In.txt and expected output (numbers in reversed order separated by tabs) on a file named test4_Out.txt
+Running the test: Run "make test4" on command line
+Check pass/fail: Compare generated output file with expected output file using diff command on bash
+
+Test5: regularList
+Purpose: To check with regular input (under 10 numbers) if program correctly stores and prints numbers, and frees the memory properly
+What is tested:	Memory allocation, memory liberation, correctness of output
+Setup: Store 7 numbers (other than 999) followed by 999 (each number must be in a new line) on a file named test5_In.txt and expected output (numbers in reversed order separated by tabs) on a file named test5_ExpOut.txt
+Running the test: Run "make test5" on command line
+Check pass/fail: Compare generated output file with expected output file using diff command on bash
+
+Test6: negativeNumbers
+Purpose: To check that the program also takes negative numbers as input and manipulates them correctly
+What is tested: Input, storage of values in memory
+Setup: Store 5 mixed numbers (some negative, some positive, none being 999) followed by 999 (each number should be in a new line) on a file named test6_In.txt and expected output (numbers in reversed order separated by tabs) on a file named test6_ExpOut.txt 
+Running the test: Run "make test6" on command line
+Check pass/fail: Compare generated output file with the expected output file using diff command on bash
+
+Test7: largeNumbers
+Purpose: To check that the program can rightly take large numbers, store them, and manipulate them
+What is tested:	Storage of values in memory
+Setup: Store a list of 8 large numbers (not including 999) followed by 999 (each number should be in a new line) on a file named test7_In.txt and expected output (numbers in reverse order separated by tabs) on a file named test7_ExpOut.txt
+Running the test: Run "make test7" on command line
+Check pass/fail: Compare generated output file with the expected output file using diff command on bash
