@@ -5,6 +5,7 @@
  * jeg3954
  *
  */
+
 #include <stdio.h>
 #include <assert.h>
 #include "MyString.h"
@@ -59,9 +60,9 @@ int checkRattles(String *type){
     return isEqual;
 }
 
-void sorryMessage(int *index, String *type, int *inStock){
+void sorryMessage(String *name, String *type, int *inStock){
     printf("Sorry ");
-    StringPrint(&customers[*index].name);
+    StringPrint(name);
     printf(", we only have %d ", *inStock);
     StringPrint(type);
     printf("\n");
@@ -77,11 +78,11 @@ void mostBottles(){
             index = i;
         }
     }
-    if(max != 0){
-        printf("no one has purchased any Bottles");
+    if(max == 0){
+        printf("no one has purchased any Bottles \n");
     } else{
         StringPrint(&customers[index].name);
-        printf(" has purchased the most Bottles (%d)", customers[index].bottles);
+        printf(" has purchased the most Bottles (%d) \n", customers[index].bottles);
 
     }
 }
@@ -95,13 +96,14 @@ void mostDiapers(){
             index = i;
         }
     }
-    if(max != 0){
-        printf("no one has purchased any Diapers");
+    if(max == 0){
+        printf("no one has purchased any Diapers \n");
     } else{
         StringPrint(&customers[index].name);
-        printf(" has purchased the most Diapers (%d)", customers[index].diapers);
+        printf(" has purchased the most Diapers (%d) \n", customers[index].diapers);
 
     }
+    return;
 }
 
 void mostRattles(){
@@ -113,11 +115,11 @@ void mostRattles(){
             index = i;
         }
     }
-    if(max != 0){
-        printf("no one has purchased any Rattles");
+    if(max == 0){
+        printf("no one has purchased any Rattles \n");
     } else{
         StringPrint(&customers[index].name);
-        printf(" has purchased the most Rattles (%d)", customers[index].rattles);
+        printf(" has purchased the most Rattles (%d) \n", customers[index].rattles);
 
     }
 }
@@ -131,41 +133,44 @@ void processSummarize() {
     return;
 }
 
-void makePurchase(int index, String *type, int *amount){
-    if(checkBottles(type)){
-        if(stock.bottles < *amount){
-            sorryMessage(&index, type, &stock.bottles);
-        } else{
-            customers[index].bottles += *amount;
-            stock.bottles -= *amount;
-        }
-    } else if(checkDiapers(type)){
-        if(stock.bottles < *amount){
-            sorryMessage(&index, type, &stock.diapers);
-        } else{
-            customers[index].diapers += *amount;
-            stock.diapers -= *amount;
-        }
-    } else if(checkRattles(type)){
-        if(stock.bottles < *amount){
-            sorryMessage(&index, type, &stock.rattles);
-        } else{
-            customers[index].rattles += *amount;
-            stock.rattles -= *amount;
-        }
-    }
-    return;
-}
-
 int customerSearch(String *name){
     for(int i = 0; i < num_customers; i++){
         if(StringIsEqualTo(name, &customers[i].name)){
             return i;
         }
     }
-    customers[num_customers].name = *name;
+    customers[num_customers].name = StringDup(name);
+    customers[num_customers].bottles = 0;
+    customers[num_customers].diapers = 0;
+    customers[num_customers].rattles = 0;
     num_customers++;
     return (num_customers - 1);
+}
+
+void makePurchase(String *type, String *name, int amount){
+    if(checkBottles(type)){
+        if(stock.bottles < amount){
+            sorryMessage(name, type, &stock.bottles);
+        } else{
+            customers[customerSearch(name)].bottles += amount;
+            stock.bottles -= amount;
+        }
+    } else if(checkDiapers(type)){
+        if(stock.diapers < amount){
+            sorryMessage(name, type, &stock.diapers);
+        } else{
+            customers[customerSearch(name)].diapers += amount;
+            stock.diapers -= amount;
+        }
+    } else if(checkRattles(type)){
+        if(stock.rattles < amount){
+            sorryMessage(name, type, &stock.rattles);
+        } else{
+            customers[customerSearch(name)].rattles += amount;
+            stock.rattles -= amount;
+        }
+    }
+    return;
 }
 
 void processPurchase() {
@@ -174,18 +179,21 @@ void processPurchase() {
     readString(&name);
     readString(&type);
     readNum(&amount);
-    makePurchase(customerSearch(&name), &type, &amount);
-    StringDestroy(&name);
-    StringDestroy(&type);
+    if(amount > 0){
+        makePurchase(&type, &name, amount);
+        StringDestroy(&name);
+        StringDestroy(&type);
+    }
+    return;
 }
 
-void addToInventory(String *type, int *amount){
+void addToInventory(String *type, int amount){
     if(checkBottles(type)){
-        stock.bottles += *amount;
+        stock.bottles += amount;
     } else if(checkDiapers(type)){
-        stock.diapers += *amount;
+        stock.diapers += amount;
     } else if(checkRattles(type)){
-        stock.rattles += *amount;
+        stock.rattles += amount;
     }
     return;
 }
@@ -195,7 +203,7 @@ void processInventory() {
     int amount;
     readString(&type);
     readNum(&amount);
-    addToInventory(&type, &amount);
+    addToInventory(&type, amount);
     StringDestroy(&type);
     return;
 }
