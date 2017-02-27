@@ -21,6 +21,9 @@ void reset(void) {
     stock.bottles = 0;
     stock.diapers = 0;
     stock.rattles = 0;
+    for(int i = 0; i < num_customers; i++){
+        StringDestroy(&customers[i].name);
+    }
     num_customers = 0;
 }
 
@@ -181,9 +184,9 @@ void processPurchase() {
     readNum(&amount);
     if(amount > 0){
         makePurchase(&type, &name, amount);
-        StringDestroy(&name);
-        StringDestroy(&type);
     }
+    StringDestroy(&name);
+    StringDestroy(&type);
     return;
 }
 
