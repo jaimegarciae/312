@@ -67,7 +67,19 @@ int main(void) {
 	reset();
 	readInput("test3.txt");
 	reset();
-
+	readInput("test4.txt");
+	reset();
+	readInput("test5.txt");
+	reset();
+	readInput("test6.txt");
+	reset();
+	readInput("test7.txt");
+	reset();
+	readInput("test8.txt");
+	reset();
+	readInput("test9.txt");
+	reset();
+	
 	/* all the test are done, time to clean up, let's deallocate our "constant strings" */
 	StringDestroy(&inventory);
 	StringDestroy(&purchase);

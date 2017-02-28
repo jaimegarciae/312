@@ -1,0 +1,23 @@
+Inventory Rattles 50
+Inventory Diapers 200
+
+Purchase Craig Rattles -4
+Purchase Craig Rattles 20
+Purchase Craig Diapers 100
+Purchase Sue Diapers 0
+Purchase Pedro Bottles 10
+Purchase Reid Bottles 0 
+
+
+Summarize
+Quit
+/** test9 Results should be: **/
+Sorry Pedro, we only have 0 bottles
+There are 0 Bottles, 100 Diapers and 30 Rattles in inventory
+we have had a total of 1 different customers
+no one has purchased any Bottles
+Craig has purchased the most Diapers (100)
+Craig has purchased the most Rattles (20)
+/********* end of test 9 *************/
+
+
