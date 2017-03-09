@@ -2,7 +2,8 @@
  * Set ADT
  * Project5.c 
  *
- * My Name
+ * Jaime Eugenio Garcia
+ * jeg3954
  * My Section Time
  * Spring 2017
  *
@@ -29,8 +30,6 @@
  * (2) amortized doubling is not used, and capacity is ignored/unused. Functions should assume that 
  * the amount of storage available in the elements[] array is equal to length
  */
-
-
 
 /* done for you already */
 void destroySet(Set* self) {
@@ -69,6 +68,20 @@ void assignSet(Set* self, const Set* other) {
 
 /* return true if x is an element of self */
 bool isMemberSet(const Set* self, int x) {
+	int low_bound = 0;
+	int high_bound = (self->len) - 1;
+	int middle;
+	while(low_bound <= high_bound){
+		middle = (low_bound + high_bound)/2;
+		if(set->elements[middle] == x){
+			return true;
+		} else if(set->elements[middle] < x){
+			low_bound = middle + 1;
+		} else if(set->elements[middle] > x){
+			high_bound = middle - 1;
+		}
+	}
+	return false;
 }
 
 /*
@@ -77,9 +90,34 @@ bool isMemberSet(const Set* self, int x) {
  * Be sure to restore the design invariant property that elemnts[] remains sorted
  * (yes, you can assume it is sorted when the function is called, that's what an invariant is all about)
  */
-void insertSet(Set* self, int x) {
+void insertSet(Set* self, int x) {	
+	if(!isMemberSet(self, x)){
+		if(self->len == 0){
+			createSingletonSet(self, x);
+		} else{
+			self->len += 1;
+			realloc(self->elements, (self->len)*(sizeof(int)));
+			int i = self->len - 1;
+			while(i > 0){
+				if((self->elements[i-1]) > x){
+					self->elements[i] = self->element[i-1];
+				} else{
+					self->elements[i-1] = x;
+					break;
+				}
+				i--;
+			}
+		}
+	}
+	return;
 }
 
+void shiftDown(Set* self, int index){
+	for(int i = (self->len)-1; i > index; i--){
+		self->elements[i-1] = self->elements[i];
+	}
+	self->len -= 1;
+}
 
 /*
  * don't forget: it is OK to try to remove an element
@@ -92,7 +130,21 @@ void insertSet(Set* self, int x) {
  * is almost definitely NOT worth the trouble
  */
 void removeSet(Set* self, int x) {
-
+	int low_bound = 0;
+	int high_bound = (self->len) - 1;
+	int middle;
+	while(low_bound <= high_bound){
+		middle = (low_bound + high_bound)/2;
+		if(set->elements[middle] == x){
+			shiftDown(self, middle);
+			break;
+		} else if(set->elements[middle] < x){
+			low_bound = middle + 1;
+		} else if(set->elements[middle] > x){
+			high_bound = middle - 1;
+		}
+	}
+	return;
 }
 
 /* done for you already */
@@ -115,12 +167,50 @@ void displaySet(const Set* self) {
 	}
 }
 
+bool compareSets(const Set* self, const Set* other){
+	for(int i = 0; i < self->len; i++){
+		if((self->elements[i]) != (other->elements[i])){
+			return false;
+		}
+	}
+	return true;
+}
+
 /* return true if self and other have exactly the same elements */
 bool isEqualToSet(const Set* self, const Set* other) {
+	if(self->len == other->len){
+		return compareSets(self, other);
+	} else{
+		return false;
+	}
+}
+
+bool elementOf(Set* self, Set* other){
+	int i = 0, j = 0;
+	while(i < self->len){
+		if(j == other->len){
+			return false;
+		} else if(self->elements[i] < other->elements[j]){
+			return false;
+		} else if(self->elements[i] == other->elements[j]){
+			i++;
+			j++;
+		} else{
+			j++;
+		}
+	}
+	return true;
 }
 
 /* return true if every element of self is also an element of other */
 bool isSubsetOf(const Set* self, const Set* other) {
+	if(self->len == 0){
+		return true;
+	}else if(self->len <= other->len){
+		return elementOf(self, other);
+	} else{
+		return false;
+	}
 }
 
 /* done for you */
@@ -128,14 +218,113 @@ bool isEmptySet(const Set* self) {
 	return self->len == 0;
 }
 
+int copyRepeated(Set* self, Set* other, int* temp){
+	int i = 0, j = 0, k = 0;
+	while(i < (self->len) && j < (other->len)){
+		if(self->elements[i] == other->elements[j]){
+			temp[k] = self->elements[i];
+			k++;
+			i++;
+			j++
+		} else if(self->elements[i] < other->elements[j]){
+			i++;
+		} else{
+			j++;
+		}
+	}
+	return k;
+}
+
 /* remove all elements from self that are not also elements of other */
 void intersectFromSet(Set* self, const Set* other) {
+	if(self->len == 0 || other->len == 0){
+		return;
+	} else{
+		int *temp = (int*)malloc((self->len)*sizeof(int));
+		int length = copyRepeated(self, other, temp);
+		free(self->elements);
+		self->elements = temp;
+		self->len = length;
+	}
+	return;
+}
+
+int deleteRepeated(Set* self, Set* other, int *temp){
+	int i = 0, j = 0, k = 0;
+	while(i < (self->len) && j < (other->len)){
+		if(self->elements[i] == other->elements[j]){
+			i++;
+			j++;
+		} else if(self->elements[i] < other->elements[j]){
+			temp[k] = self->elements[i];
+			i++;
+			k++;
+		} else{
+			j++;
+		}
+	}
+	return k;
 }
 
 /* remove all elements from self that are also elements of other */
 void subtractFromSet(Set* self, const Set* other) {
+	if(self->len == 0 || other->len == 0){
+		return;
+	} else{
+		int *temp = (int*)malloc((self->len)*sizeof(int));
+		int length = deleteRepeated(self, other, temp);
+		free(self->elements);
+		self->elements = temp;
+		self->len = length;
+	}	
+	return;
+}
+
+int combineSets(Set *self, Set* other, int *temp){
+	int i = 0, j = 0, k = 0;
+	while(i < (self->len) && j < (other->len)){
+		if(self->elements[i] == other->elements[j]){
+			temp[k] = self->elements[i];
+			k++;
+			i++;
+			j++;
+		} else if(self->elements[i] < other->elements[j]){
+			temp[k] = self->elements[i];
+			k++;
+			i++;
+		} else{
+			temp[k] = other->elements[j];
+			k++;
+			j++;
+		}
+	}
+	if(i == self->len){
+		while(j < other->len){
+			temp[k] = other->elements[j];
+			k++;
+			j++;
+		}
+	} else if(j == other->len){
+		while(i < self->len){
+			temp[k] = self->elements[i];
+			k++;
+			i++;
+		}
+	}
+	return k;
 }
 
 /* add all elements of other to self (obviously, without creating duplicate elements) */
 void unionInSet(Set* self, const Set* other) {
+	if(other->len == 0){
+		return;
+	} else{
+		int temp_size = self->len + other->len;
+		int *temp = (int*)malloc(length*sizeof(int));
+		int length = combineSets(self, other, temp);
+		free(self->elements);
+		self->elements = temp;
+		self->len = length;
+	}	
+	return;
 }
