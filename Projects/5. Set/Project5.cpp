@@ -73,11 +73,11 @@ bool isMemberSet(const Set* self, int x) {
 	int middle;
 	while(low_bound <= high_bound){
 		middle = (low_bound + high_bound)/2;
-		if(set->elements[middle] == x){
+		if(self->elements[middle] == x){
 			return true;
-		} else if(set->elements[middle] < x){
+		} else if(self->elements[middle] < x){
 			low_bound = middle + 1;
-		} else if(set->elements[middle] > x){
+		} else if(self->elements[middle] > x){
 			high_bound = middle - 1;
 		}
 	}
@@ -96,16 +96,19 @@ void insertSet(Set* self, int x) {
 			createSingletonSet(self, x);
 		} else{
 			self->len += 1;
-			realloc(self->elements, (self->len)*(sizeof(int)));
-			int i = self->len - 1;
+			self->elements = (int *) realloc(self->elements, (self->len)*(sizeof(int)));
+			int i = (self->len) - 1;
 			while(i > 0){
 				if((self->elements[i-1]) > x){
-					self->elements[i] = self->element[i-1];
+					self->elements[i] = self->elements[i-1];
 				} else{
-					self->elements[i-1] = x;
+					self->elements[i] = x;
 					break;
 				}
 				i--;
+                if(i == 0){
+                    self->elements[i] = x;
+                }
 			}
 		}
 	}
@@ -113,8 +116,8 @@ void insertSet(Set* self, int x) {
 }
 
 void shiftDown(Set* self, int index){
-	for(int i = (self->len)-1; i > index; i--){
-		self->elements[i-1] = self->elements[i];
+	for(int i = 0; i < (self->len -1); i++){
+		self->elements[i] = self->elements[i+1];
 	}
 	self->len -= 1;
 }
@@ -135,12 +138,12 @@ void removeSet(Set* self, int x) {
 	int middle;
 	while(low_bound <= high_bound){
 		middle = (low_bound + high_bound)/2;
-		if(set->elements[middle] == x){
+		if(self->elements[middle] == x){
 			shiftDown(self, middle);
 			break;
-		} else if(set->elements[middle] < x){
+		} else if(self->elements[middle] < x){
 			low_bound = middle + 1;
-		} else if(set->elements[middle] > x){
+		} else if(self->elements[middle] > x){
 			high_bound = middle - 1;
 		}
 	}
@@ -178,14 +181,16 @@ bool compareSets(const Set* self, const Set* other){
 
 /* return true if self and other have exactly the same elements */
 bool isEqualToSet(const Set* self, const Set* other) {
-	if(self->len == other->len){
+	if(self->len == other->len && self->len == 0 ) {
+        return true;
+    }else if(self->len == other->len){
 		return compareSets(self, other);
 	} else{
 		return false;
 	}
 }
 
-bool elementOf(Set* self, Set* other){
+bool elementOf(const Set* self, const Set* other){
 	int i = 0, j = 0;
 	while(i < self->len){
 		if(j == other->len){
@@ -218,14 +223,14 @@ bool isEmptySet(const Set* self) {
 	return self->len == 0;
 }
 
-int copyRepeated(Set* self, Set* other, int* temp){
+int copyRepeated(Set* self, const Set* other, int* temp){
 	int i = 0, j = 0, k = 0;
 	while(i < (self->len) && j < (other->len)){
 		if(self->elements[i] == other->elements[j]){
 			temp[k] = self->elements[i];
 			k++;
 			i++;
-			j++
+			j++;
 		} else if(self->elements[i] < other->elements[j]){
 			i++;
 		} else{
@@ -237,9 +242,11 @@ int copyRepeated(Set* self, Set* other, int* temp){
 
 /* remove all elements from self that are not also elements of other */
 void intersectFromSet(Set* self, const Set* other) {
-	if(self->len == 0 || other->len == 0){
+	if(self->len == 0){
 		return;
-	} else{
+	//}else if(other->len == 0){
+
+    }else {
 		int *temp = (int*)malloc((self->len)*sizeof(int));
 		int length = copyRepeated(self, other, temp);
 		free(self->elements);
@@ -249,7 +256,7 @@ void intersectFromSet(Set* self, const Set* other) {
 	return;
 }
 
-int deleteRepeated(Set* self, Set* other, int *temp){
+int deleteRepeated(Set* self, const Set* other, int *temp){
 	int i = 0, j = 0, k = 0;
 	while(i < (self->len) && j < (other->len)){
 		if(self->elements[i] == other->elements[j]){
@@ -263,6 +270,11 @@ int deleteRepeated(Set* self, Set* other, int *temp){
 			j++;
 		}
 	}
+    while(i < self->len){
+        temp[k] = self->elements[i];
+        i++;
+        k++;
+    }
 	return k;
 }
 
@@ -280,7 +292,7 @@ void subtractFromSet(Set* self, const Set* other) {
 	return;
 }
 
-int combineSets(Set *self, Set* other, int *temp){
+int combineSets(Set *self, const Set* other, int *temp){
 	int i = 0, j = 0, k = 0;
 	while(i < (self->len) && j < (other->len)){
 		if(self->elements[i] == other->elements[j]){
@@ -320,7 +332,7 @@ void unionInSet(Set* self, const Set* other) {
 		return;
 	} else{
 		int temp_size = self->len + other->len;
-		int *temp = (int*)malloc(length*sizeof(int));
+		int *temp = (int*)malloc(temp_size*sizeof(int));
 		int length = combineSets(self, other, temp);
 		free(self->elements);
 		self->elements = temp;

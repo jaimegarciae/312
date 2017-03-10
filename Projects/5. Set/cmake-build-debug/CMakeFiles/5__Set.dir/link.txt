@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/5__Set.dir/main.cpp.o CMakeFiles/5__Set.dir/Project5.cpp.o  -o 5__Set 

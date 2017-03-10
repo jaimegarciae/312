@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jaimegarciae/Documents/312/Projects/5. Set/Project5.cpp
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+Set.h
+/home/jaimegarciae/Documents/312/Projects/5. Set/Set.h
+
+/home/jaimegarciae/Documents/312/Projects/5. Set/Set.h
+
+/home/jaimegarciae/Documents/312/Projects/5. Set/main.cpp
+stdio.h
+-
+stdint.h
+-
+stdlib.h
+-
+assert.h
+-
+chrono
+-
+Set.h
+/home/jaimegarciae/Documents/312/Projects/5. Set/Set.h
+

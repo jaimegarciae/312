@@ -6,7 +6,7 @@
 #include "Set.h"
 
 unsigned time();
-int const number_of_tests = 1000;
+int const number_of_tests = 10; //should be 1000
 int const maximum_set_size = 100;
 
 void randomSet(Set* s);
