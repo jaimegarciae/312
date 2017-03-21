@@ -2,9 +2,7 @@
  * Project6.c
  * Recursion
  *
- * My Name
- * My TA
- * My Section Time
+ * Jaime Eugenio Garcia
  *
  *
  */
@@ -19,7 +17,13 @@
  * there are n elements in x[] (x[0].. x[n-1])
  */
 int minIt(int x[], int n) {
-	return 0;
+	int min = x[0];
+	for(int i = 1; i < n; i++){
+		if(x[i] < min){
+			min = x[i];
+		}
+	}
+	return min;
 }
 
 /* return the smallest of the elements in array x[]
@@ -28,7 +32,16 @@ int minIt(int x[], int n) {
  * use an "n-1" type of decomposition
  */
 int minRec1(int x[], int n) {
-	return 0;
+	if(n == 1){
+		return x[0];
+	} else{
+		int min = minRec1(x + 1, n - 1);
+		if(min < x[0]){
+			return min;
+		} else{
+			return x[0];
+		}
+	}
 }
 
 /*
@@ -39,7 +52,18 @@ int minRec1(int x[], int n) {
  * use an "n / 2" type of decomposition
  */
 int minRec2(int x[], int n) {
-	return 0;
+	if(n == 1){
+		return x[0];
+	} else{
+		int min1 = minRec2(x, n/2);
+		int min2 = minRec2(x + n/2, n - n/2);
+		if(min1 < min2){
+			return min1;
+		} else{
+			return min2;
+		}
+
+	}
 }
 
 
@@ -56,6 +80,12 @@ int minRec2(int x[], int n) {
  * accuracy.
  */
 double sqrtIt(double x, double low_guess, double high_guess) {
+	while(high_guess > low_guess){
+		double guess = (high_guess + low_guess)/2;
+		if((guess*guess - x) <= 1e-){
+			return guess;
+		}
+	}
 	return 0;
 }
 

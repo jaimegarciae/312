@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jaimegarciae/Documents/312/Labs/Lab8/sort_functions.c
+sort_functions.h
+/home/jaimegarciae/Documents/312/Labs/Lab8/sort_functions.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/jaimegarciae/Documents/312/Labs/Lab8/sort_functions.h
+
+/home/jaimegarciae/Documents/312/Labs/Lab8/sort_main.c
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+time.h
+-
+sort_functions.h
+/home/jaimegarciae/Documents/312/Labs/Lab8/sort_functions.h
+
