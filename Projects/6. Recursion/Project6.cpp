@@ -80,12 +80,6 @@ int minRec2(int x[], int n) {
  * accuracy.
  */
 double sqrtIt(double x, double low_guess, double high_guess) {
-	while(high_guess > low_guess){
-		double guess = (high_guess + low_guess)/2;
-		if((guess*guess - x) <= 1e-){
-			return guess;
-		}
-	}
 	return 0;
 }
 
@@ -105,7 +99,6 @@ double sqrtRec(double x, double low_guess, double high_guess) {
 	return 0;
 }
 
-
 /*
  * using only recursion, write a string comparison function
  * return -1 if str1 is less than str2
@@ -119,9 +112,15 @@ double sqrtRec(double x, double low_guess, double high_guess) {
  *   for all j < k str1[j] == str2[j]
  *   and k is less than the length of str1 and str2
  */
-
 int strCompare(char* str1, char* str2) {
-	return 0;
+	if(*str1 == 0 && *str2 == 0){
+		return 0;
+	} else if(*str1 > *str2){
+		return 1;
+	} else if(*str1 < *str2){
+		return -1;
+	}
+	return strCompare(str1 + 1, str2 + 1);
 }
 
 /*
@@ -147,7 +146,19 @@ int whatLetter(char c) {
  * once again, you can only use recursion, no loops
  */
 int strCompare2(char* str1, char* str2) {
-	return 0;
+	if(*str1 == 0 && *str2 == 0){
+		return 0;
+	} else if(*str1 != 0 && whatLetter(*str1) == -1){
+		return strCompare2(str1 + 1, str2);
+	} else if(*str2 != 0 && whatLetter(*str2) == -1){
+		return strCompare2(str1, str2 + 1);
+	} else if(whatLetter(*str1) > whatLetter(*str2)){
+		return 1;
+	} else if(whatLetter(*str1) < whatLetter(*str2)){
+		return -1;
+	}
+
+	return strCompare2(str1 + 1, str2 + 1);
 }
 
 
@@ -210,6 +221,12 @@ int strCompare2(char* str1, char* str2) {
  */
 
 int solveMazeRec(int row, int col) {
+	//Drop breadcrumb at current position
+	maze[row][col] = 2;
+	//Base case: currently at the exit
+	if(row == MATRIX_SIZE - 1){
+		return 1;
+	}
 	return 0;
 }
 
@@ -337,6 +354,35 @@ void solveMazeIt(int row, int col) {
 	}
 }
 
+Martian tryCoins(Martian m, int cents, int nick, int dodek){
+	//Base cases: negative cents, all pennies, or no coins at all
+	if(cents < 0){
+		m = {-1,-1,-1};
+		return m;
+	}else if(cents == 0){
+		return m;
+	} else if(cents < nick){
+		m.pennies += cents;
+		return m;
+	}
+	//Try nick
+	Martian tryNick = {m.pennies,m.nicks,m.dodeks};
+	tryNick.nicks += 1;
+	tryNick = tryCoins(tryNick, cents - nick, nick, dodek);
+	//Try dodek
+	Martian tryDodek = {m.pennies,m.nicks,m.dodeks};
+	tryDodek.dodeks += 1;
+	tryDodek = tryCoins(tryDodek, cents - dodek, nick, dodek);
+	
+	//Check best option
+	if(tryDodek.pennies < 0){
+		return tryNick;
+	} else if((tryDodek.pennies + tryDodek.nicks + tryDodek.dodeks) < (tryNick.pennies + tryNick.nicks + tryNick.dodeks)){
+		return tryDodek;
+	} else{
+		return tryNick;
+	}
+} 
 
 /*
  * using recursion, with no loops or globals, write a function that calculates the optimal
@@ -344,7 +390,9 @@ void solveMazeIt(int row, int col) {
  * this optimal collection of coins.
  */
 Martian change(int cents) {
-	return Martian{}; // delete this line, it's broken. Then write the function properly!
+	Martian m = {0,0,0};
+	m = tryCoins(m, cents, 5, 12);
+	return m;
 }
 
 /*
@@ -356,7 +404,9 @@ Martian change(int cents) {
  * martian change problem is just as easy as the concrete version 
  */
 Martian change(int cents, int nick_val, int dodek_val) {
-	return Martian{}; // delete this line, it's broken. Then write the function properly!
+	Martian m = {0,0,0};
+	m = tryCoins(m, cents, nick_val, dodek_val);
+	return m;
 }
 
 /* 

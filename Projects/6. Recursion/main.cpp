@@ -227,7 +227,7 @@ int main(void) {
 	const int magic_number = 13017;
 
 	/* test min */
-	int a[] = {2, 3, 4, 5, 6, 7, 8, 1, 10, 9};
+	int a[] = {2, 3, 4, 5, 1, 7, 8, 6, 10, 9};
 	printf("the smallest of the first 10 natural numbers is: %d\n", minIt(a, 10));
 	printf("the smallest of the first 10 natural numbers is: %d\n", minRec1(a, 10));
 	printf("the smallest of the first 10 natural numbers is: %d\n", minRec2(a, 10));
@@ -246,77 +246,77 @@ int main(void) {
 //	printf("the sqrt of 2 is %g\n", sqrtRec(2.0, 0, 2.0));
 
 	/* test strCompare */
-//	char* s1; char* s2;
-//	s1 = "apple"; s2 = "apricot";
-//	if (strCompare(s1, s2) < 0) { 
-//		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
-//	}
+	char* s1; char* s2;
+	s1 = "apple"; s2 = "apricot";
+	if (strCompare(s1, s2) < 0) { 
+		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
+	}
 			
-//	s1 = "Apple"; s2 = "apple";
-//	if (strCompare(s1, s2) < 0) { 
-//		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
-//	}
+	s1 = "Apple"; s2 = "apple";
+	if (strCompare(s1, s2) < 0) { 
+		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "baby boy"; s2 = "banana";
-//	if (strCompare(s1, s2) < 0) { 
-//		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
-//	}
+	s1 = "baby boy"; s2 = "banana";
+	if (strCompare(s1, s2) < 0) { 
+		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "a rather silly string"; s2 = "a rather silly string";
-//	if (strCompare(s1, s2) == 0) { 
-//		printf("\"%s\" is equal to \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be equal to \"%s\"\n", s1, s2);
-//	}
+	s1 = "a rather silly string"; s2 = "a rather silly string";
+	if (strCompare(s1, s2) == 0) { 
+		printf("\"%s\" is equal to \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be equal to \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "12345"; s2 = "12345";
-//	if (strCompare(s1, s2) == 0) { 
-//		printf("\"%s\" is equal to \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be equal to \"%s\"\n", s1, s2);
-//	}
+	s1 = "12345"; s2 = "12345";
+	if (strCompare(s1, s2) == 0) { 
+		printf("\"%s\" is equal to \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be equal to \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "Numbers: 12345"; s2 = "12345";
-//	if (strCompare(s1, s2) > 0) { 
-//		printf("\"%s\" is greater than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be greater than \"%s\"\n", s1, s2);
-//	}
+	s1 = "Numbers: 12345"; s2 = "12345";
+	if (strCompare(s1, s2) > 0) { 
+		printf("\"%s\" is greater than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be greater than \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "Texas"; s2 = "California";
-//	if (strCompare(s1, s2) > 0) { 
-//		printf("\"%s\" is greater than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be greater than \"%s\"\n", s1, s2);
-///	}
+	s1 = "Texas"; s2 = "California";
+	if (strCompare(s1, s2) > 0) { 
+		printf("\"%s\" is greater than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be greater than \"%s\"\n", s1, s2);
+	}
 
 	/* test strCompare2 */
-//	s1 = "apple"; s2 = "Apricot";
-//	if (strCompare2(s1, s2) < 0) { 
-//		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
-//	}
+	s1 = "apple"; s2 = "Apricot";
+	if (strCompare2(s1, s2) < 0) { 
+		printf("\"%s\" is less than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be less than \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "Batman!"; s2 = "bat man";
-//	if (strCompare2(s1, s2) == 0) { 
-//		printf("\"%s\" is equal to \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be equal to \"%s\"\n", s1, s2);
-//	}
+	s1 = "Batman!"; s2 = "bat man";
+	if (strCompare2(s1, s2) == 0) { 
+		printf("\"%s\" is equal to \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be equal to \"%s\"\n", s1, s2);
+	}
 
-//	s1 = "OMG, WTF?"; s2 = "oh my goodness, what the heck?";
-//	if (strCompare2(s1, s2) > 0) { 
-//		printf("\"%s\" is greater than \"%s\", very good\n", s1, s2);
-//	} else {
-//		printf("oops, \"%s\" should be greater than \"%s\"\n", s1, s2);
-//	}
+	s1 = "OMG, WTF?"; s2 = "oh my goodness, what the heck?";
+	if (strCompare2(s1, s2) > 0) { 
+		printf("\"%s\" is greater than \"%s\", very good\n", s1, s2);
+	} else {
+		printf("oops, \"%s\" should be greater than \"%s\"\n", s1, s2);
+	}
 
 	/* test maze */		
 //	srand(magic_number);
@@ -335,20 +335,20 @@ int main(void) {
 //	printMaze();
 
 	/* test Martian */
-//	Martian change1 = change(15);
-//	printf("change 1 should be 0d, 3n, 0p and is: %dd %dn %dp\n", change1.dodeks, change1.nicks, change1.pennies);
+	Martian change1 = change(15);
+	printf("change 1 should be 0d, 3n, 0p and is: %dd %dn %dp\n", change1.dodeks, change1.nicks, change1.pennies);
 
-//	Martian change2 = change(0);
-//	printf("change 2 should be 0d, 0n, 0p and is: %dd %dn %dp\n", change2.dodeks, change2.nicks, change2.pennies);
+	Martian change2 = change(0);
+	printf("change 2 should be 0d, 0n, 0p and is: %dd %dn %dp\n", change2.dodeks, change2.nicks, change2.pennies);
 
-//	Martian change3 = change(17);
-//	printf("change 3 should be 1d, 1n, 0p and is: %dd %dn %dp\n", change3.dodeks, change3.nicks, change3.pennies);
+	Martian change3 = change(17);
+	printf("change 3 should be 1d, 1n, 0p and is: %dd %dn %dp\n", change3.dodeks, change3.nicks, change3.pennies);
 
-//	Martian change4 = change(25);
-//	printf("change 4 should be 2d, 0n, 1p and is: %dd %dn %dp\n", change4.dodeks, change4.nicks, change4.pennies);
+	Martian change4 = change(25);
+	printf("change 4 should be 2d, 0n, 1p and is: %dd %dn %dp\n", change4.dodeks, change4.nicks, change4.pennies);
 
 	/* A very simple and obvious test of the general form of Martian
 	 * be sure and test your solution more thoroughly!!!! */
-//	change4 = change(25, 5, 12);
-//	printf("change 4 should be 2d, 0n, 1p and is: %dd %dn %dp\n", change4.dodeks, change4.nicks, change4.pennies);
+	change4 = change(25, 5, 12);
+	printf("change 4 should be 2d, 0n, 1p and is: %dd %dn %dp\n", change4.dodeks, change4.nicks, change4.pennies);
 }
