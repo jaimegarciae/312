@@ -220,6 +220,16 @@ int strCompare2(char* str1, char* str2) {
  * along a path to the exit.
  */
 
+/* 
+ * return false if there is a wall o in the square for row and col
+ * return true if it's not a wall.
+ */
+int isOK(int row, int col) {
+	return (row > 0 && row < MATRIX_SIZE
+		&& col > 0 && col < MATRIX_SIZE
+		&& maze[row][col] == 0);
+}
+
 int solveMazeRec(int row, int col) {
 	//Drop breadcrumb at current position
 	maze[row][col] = 2;
@@ -227,77 +237,33 @@ int solveMazeRec(int row, int col) {
 	if(row == MATRIX_SIZE - 1){
 		return 1;
 	}
-	return 0;
-}
-
-
-/**********************
- * adjacentCell and isOK are functions provided to help you write
- * solveMazeIt()
- */
-
-/*
- * OK, we're currently at maze[row][col] and we're considering moving
- * in direction dir.  
- * Set trow and tcol (local variables inside the calling function)
- * to the row and column that we would move to IF we moved in
- * that direction
- *
- * For example, there are two good ways to use this function.
- * 1. to actually move one step in a direction use:
- *       adjacentCell(row, col, dir, &row, &col);
- *    That will set row and col to new values.  The new values will
- *    be one square away from the old values.
- *
- * 2. to set trow and tcol to a square that is adjacent to row and col use:
- *       adjacentCell(row, col, dir, &trow, &tcol);
- *    That will not change row and col, but will change trow and tcol.
- *    This is useful if you aren't sure if you can actually move in this 
- *    direction yet (e.g., maze[trow][tcol] may be a wall!).  So, you set
- *    trow and tcol, and then check to see if it's OK to move there
- */
-void adjacentCell(int row, int col, int dir, int* trow, int* tcol) {
-	*trow = row;
-	*tcol = col;
-	switch(dir) {
-	case 0: // UP
-		*trow = *trow - 1;
-		break;
-	case 1: // RIGHT
-		*tcol = *tcol + 1;
-		break;
-	case 2: // DOWN
-		*trow = *trow + 1;
-		break;
-	case 3: // LEFT
-		*tcol = *tcol - 1;
-		break;
+	//Try going up
+	if(isOK(row + 1, col)){
+		if(solveMazeRec(row + 1, col)){
+			return 1;
+		}
 	}
-}
-
-
-/* 
- * return false if there is a wall in the square for row and col
- * return true if it's not a wall.
- */
-int isOK(int row, int col) {
-	return (row > 0 && row < MATRIX_SIZE
-		&& col > 0 && col < MATRIX_SIZE
-		&& maze[row][col] != 1);
-}
-
-/*
- * return the value of the direction that is one turn to the right
- */
-int turnRight(int dir) {
-	return (dir + 1) % 4;
-}
-
-/*
- * return the value of the direction that is one turn to the left
- */
-int turnLeft(int dir) {
-	return (dir + 3) % 4;
+	//Try going down
+	if(isOK(row - 1, col)){
+		if(solveMazeRec(row - 1, col)){
+			return 1;
+		}
+	}
+	//Try going left
+	if(isOK(row, col - 1)){
+		if(solveMazeRec(row, col - 1)){
+			return 1;
+		}
+	}
+	//Try going right
+	if(isOK(row, col + 1)){
+		if(solveMazeRec(row, col + 1)){
+			return 1;
+		}
+	}
+	//If no way worked, pick up bread crumb
+	maze[row][col] = 0;
+	return 0;
 }
 
 /*
@@ -346,12 +312,13 @@ int turnLeft(int dir) {
 void solveMazeIt(int row, int col) {
 	int dir = 2; // 0 is up, 1 is right, 2 is down, 3 is left.
 	maze[row][col] = 2; // drop a bread crumb in the starting square
-	while (row < MATRIX_SIZE - 1) { // the exit is the only open square 
-				// in the last row
-
-		/* the rest of this loop is yours */
-
+	/*
+	while (row < MATRIX_SIZE - 1) { 
+		the exit is the only open square 
+		in the last row
+		the rest of this loop is yours
 	}
+	*/
 }
 
 Martian tryCoins(Martian m, int cents, int nick, int dodek){

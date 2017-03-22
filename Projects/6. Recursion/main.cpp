@@ -319,21 +319,14 @@ int main(void) {
 	}
 
 	/* test maze */		
-//	srand(magic_number);
-//	makeMaze();
-//	recodeMaze();
-//	printf("recursive solution to the maze\n");
-//	solveMazeRec(0, start_col);	
-//	printMaze();
-//	printf("\n\n\n");
+	srand(magic_number);
+	makeMaze();
+	recodeMaze();
+	printf("recursive solution to the maze\n");
+	solveMazeRec(0, start_col);	
+	printMaze();
+	printf("\n\n\n");
 	
-//	printf("iterative solution to the maze\n");
-//	srand(magic_number);
-//	makeMaze();
-//	recodeMaze();
-//	solveMazeIt(0, start_col);
-//	printMaze();
-
 	/* test Martian */
 	Martian change1 = change(15);
 	printf("change 1 should be 0d, 3n, 0p and is: %dd %dn %dp\n", change1.dodeks, change1.nicks, change1.pennies);
