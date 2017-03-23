@@ -3,6 +3,8 @@
  * Recursion
  *
  * Jaime Eugenio Garcia
+ * Ahsen
+ * 2-3pm
  *
  *
  */
@@ -66,7 +68,6 @@ int minRec2(int x[], int n) {
 	}
 }
 
-
 /*
  * calculate and return the square root of x.
  * The other two parameters are estimates of the square root.
@@ -80,7 +81,16 @@ int minRec2(int x[], int n) {
  * accuracy.
  */
 double sqrtIt(double x, double low_guess, double high_guess) {
-	return 0;
+	double guess;
+	while((high_guess - low_guess) > 1e-15){
+		guess = (low_guess + high_guess)/2;
+		if(x < guess*guess){
+			high_guess = guess;
+		} else{
+			low_guess = guess;
+		}
+	}
+	return guess;
 }
 
 /*
@@ -96,7 +106,17 @@ double sqrtIt(double x, double low_guess, double high_guess) {
  * accuracy.
  */
 double sqrtRec(double x, double low_guess, double high_guess) {
-	return 0;
+	double guess = (low_guess + high_guess)/2;
+	// Base case: low guess and high guess are equal, accurate to 15 decimal places
+	if((high_guess - low_guess) < 1e-15){
+		return guess;
+	}
+
+	if(x < guess*guess){
+		return sqrtRec(x, low_guess, guess);
+	} else{
+		return sqrtRec(x, guess, high_guess);
+	}
 }
 
 /*
@@ -148,20 +168,17 @@ int whatLetter(char c) {
 int strCompare2(char* str1, char* str2) {
 	if(*str1 == 0 && *str2 == 0){
 		return 0;
-	} else if(*str1 != 0 && whatLetter(*str1) == -1){
+	} else if(*str1 != 0 && whatLetter(*str1) == -1){ //Skip non-letter characters in str1
 		return strCompare2(str1 + 1, str2);
-	} else if(*str2 != 0 && whatLetter(*str2) == -1){
+	} else if(*str2 != 0 && whatLetter(*str2) == -1){ //Skip non-letter characters in str2
 		return strCompare2(str1, str2 + 1);
 	} else if(whatLetter(*str1) > whatLetter(*str2)){
 		return 1;
 	} else if(whatLetter(*str1) < whatLetter(*str2)){
 		return -1;
 	}
-
 	return strCompare2(str1 + 1, str2 + 1);
 }
-
-
 
 /*
  * the two dimensional array maze[MATRIX_SIZE][MATRIX_SIZE] contains a maze
@@ -219,44 +236,31 @@ int strCompare2(char* str1, char* str2) {
  * for full credit, you must pick up all the bread crumbs EXCEPT those
  * along a path to the exit.
  */
-
-/* 
- * return false if there is a wall o in the square for row and col
- * return true if it's not a wall.
- */
-int isOK(int row, int col) {
-	return (row > 0 && row < MATRIX_SIZE
-		&& col > 0 && col < MATRIX_SIZE
-		&& maze[row][col] == 0);
+int checkPosition(int row, int col) { //Checks to see if movement can be made towards the position (row,col)
+	return (row > 0 && row < MATRIX_SIZE && col > 0 && col < MATRIX_SIZE && maze[row][col] == 0);
 }
-
 int solveMazeRec(int row, int col) {
-	//Drop breadcrumb at current position
-	maze[row][col] = 2;
+	maze[row][col] = 2; //Drop breadcrumb at current position
 	//Base case: currently at the exit
 	if(row == MATRIX_SIZE - 1){
 		return 1;
 	}
-	//Try going up
-	if(isOK(row + 1, col)){
+	if(checkPosition(row + 1, col)){ //Try going down
 		if(solveMazeRec(row + 1, col)){
 			return 1;
 		}
 	}
-	//Try going down
-	if(isOK(row - 1, col)){
+	if(checkPosition(row - 1, col)){ //Try going up
 		if(solveMazeRec(row - 1, col)){
 			return 1;
 		}
 	}
-	//Try going left
-	if(isOK(row, col - 1)){
+	if(checkPosition(row, col - 1)){ //Try going left
 		if(solveMazeRec(row, col - 1)){
 			return 1;
 		}
 	}
-	//Try going right
-	if(isOK(row, col + 1)){
+	if(checkPosition(row, col + 1)){ //Try going right
 		if(solveMazeRec(row, col + 1)){
 			return 1;
 		}
@@ -264,6 +268,70 @@ int solveMazeRec(int row, int col) {
 	//If no way worked, pick up bread crumb
 	maze[row][col] = 0;
 	return 0;
+}
+
+/**********************
+ * adjacentCell and isOK are functions provided to help you write
+ * solveMazeIt()
+ */
+/*
+ * OK, we're currently at maze[row][col] and we're considering moving
+ * in direction dir.  
+ * Set trow and tcol (local variables inside the calling function)
+ * to the row and column that we would move to IF we moved in
+ * that direction
+ *
+ * For example, there are two good ways to use this function.
+ * 1. to actually move one step in a direction use:
+ *       adjacentCell(row, col, dir, &row, &col);
+ *    That will set row and col to new values.  The new values will
+ *    be one square away from the old values.
+ *
+ * 2. to set trow and tcol to a square that is adjacent to row and col use:
+ *       adjacentCell(row, col, dir, &trow, &tcol);
+ *    That will not change row and col, but will change trow and tcol.
+ *    This is useful if you aren't sure if you can actually move in this 
+ *    direction yet (e.g., maze[trow][tcol] may be a wall!).  So, you set
+ *    trow and tcol, and then check to see if it's OK to move there
+ */
+void adjacentCell(int row, int col, int dir, int* trow, int* tcol) {
+	*trow = row;
+	*tcol = col;
+	switch(dir) {
+	case 0: // UP
+		*trow = *trow - 1;
+		break;
+	case 1: // RIGHT
+		*tcol = *tcol + 1;
+		break;
+	case 2: // DOWN
+		*trow = *trow + 1;
+		break;
+	case 3: // LEFT
+		*tcol = *tcol - 1;
+		break;
+	}
+}
+/* 
+ * return false if there is a wall in the square for row and col
+ * return true if it's not a wall.
+ */
+int isOK(int row, int col) {
+	return (row > 0 && row < MATRIX_SIZE
+		&& col > 0 && col < MATRIX_SIZE
+		&& maze[row][col] != 1);
+}
+/*
+ * return the value of the direction that is one turn to the right
+ */
+int turnRight(int dir) {
+	return (dir + 1) % 4;
+}
+/*
+ * return the value of the direction that is one turn to the left
+ */
+int turnLeft(int dir) {
+	return (dir + 3) % 4;
 }
 
 /*
@@ -314,11 +382,14 @@ void solveMazeIt(int row, int col) {
 	maze[row][col] = 2; // drop a bread crumb in the starting square
 	/*
 	while (row < MATRIX_SIZE - 1) { 
-		the exit is the only open square 
-		in the last row
-		the rest of this loop is yours
+	// the exit is the only open square in the last row
+	the rest of this loop is yours
 	}
 	*/
+}
+
+int addCoins(Martian m){
+	return (m.pennies + m.nicks + m.dodeks);
 }
 
 Martian tryCoins(Martian m, int cents, int nick, int dodek){
@@ -344,7 +415,7 @@ Martian tryCoins(Martian m, int cents, int nick, int dodek){
 	//Check best option
 	if(tryDodek.pennies < 0){
 		return tryNick;
-	} else if((tryDodek.pennies + tryDodek.nicks + tryDodek.dodeks) < (tryNick.pennies + tryNick.nicks + tryNick.dodeks)){
+	} else if(addCoins(tryDodek) < addCoins(tryNick)){
 		return tryDodek;
 	} else{
 		return tryNick;

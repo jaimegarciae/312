@@ -238,12 +238,12 @@ int main(void) {
 	
 	
 	/* test sqrt */
-//	printf("the sqrt of 25 is %g\n", sqrtIt(25.0, 0, 25.0));
-//	printf("the sqrt of 26 is %g\n", sqrtIt(26.0, 0, 26.0));
-//	printf("the sqrt of 2 is %g\n", sqrtIt(2.0, 0, 2.0));
-//	printf("the sqrt of 25 is %g\n", sqrtRec(25.0, 0, 25.0));
-//	printf("the sqrt of 26 is %g\n", sqrtRec(26.0, 0, 26.0));
-//	printf("the sqrt of 2 is %g\n", sqrtRec(2.0, 0, 2.0));
+	printf("the sqrt of 25 is %g\n", sqrtIt(25.0, 0, 25.0));
+	printf("the sqrt of 26 is %g\n", sqrtIt(26.0, 0, 26.0));
+	printf("the sqrt of 2 is %g\n", sqrtIt(2.0, 0, 2.0));
+	printf("the sqrt of 25 is %g\n", sqrtRec(25.0, 0, 25.0));
+	printf("the sqrt of 26 is %g\n", sqrtRec(26.0, 0, 26.0));
+	printf("the sqrt of 2 is %g\n", sqrtRec(2.0, 0, 2.0));
 
 	/* test strCompare */
 	char* s1; char* s2;

@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/6__Recursion.dir/main.cpp.o CMakeFiles/6__Recursion.dir/Project6.cpp.o  -o 6__Recursion 
