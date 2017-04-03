@@ -118,8 +118,7 @@ void processPurchase() {
 }
 
 void eachMax(String type) {
-	Customer* max;
-	max = findMax(type);
+	Customer* max = findMax(type);
 	if(max) {
 		if (type == "Bottles") {
 			cout << max->name.c_str() << " has purchased the most " << type.c_str() << " (" << max->bottles << ")" << endl;

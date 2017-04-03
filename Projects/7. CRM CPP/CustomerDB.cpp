@@ -53,21 +53,17 @@ Customer& CustomerDB::operator[](String name) { // not done, your effort goes he
 			return this->data[i];
 		}
 	}
-
 	//Add new customer to DB if not found
 	if((this->length + 1) >= this->capacity){
 		this->capacity *= 2;
 		Customer *newDB = new Customer[this->capacity];
 		for(int i = 0; i < this->length; i++){
-			//If it doesnt work copy each property (name, bottles, etc...)
 			newDB[i] = this->data[i];
-
 		}
 		delete[] this->data;
 		this->data = newDB;
 	} 
-
-	//Initialize new customer if not found
+	//Initialize new customer
 	Customer newC = Customer(name);
 	int index = this->length;
 	this->data[index] = newC;

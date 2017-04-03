@@ -11,7 +11,7 @@ Purchase Juan Bottles 300
 Summarize
 Quit
 /** test6 Results should be: **/
-Sorry Jaun, we only have 92 Bottles
+Sorry Juan, we only have 92 Bottles
 There are 92 Bottles, 200 Diapers and 50 Rattles in inventory
 we have had a total of 1 different customers
 Craig has purchased the most Bottles (8)
