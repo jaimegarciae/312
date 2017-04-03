@@ -1,0 +1,23 @@
+Q: What is amortized doubling?
+
+A: Double the array whenever it is full so that you can add more elements next time. You'll keep a seperate array capacity and length so that you know when it's full.
+
+
+Q; How do we print?
+
+A: You have to use cout. Use the c_str() function of the string class to get a string that cout can print properly.
+
+
+Q: Which files do we turn in?
+
+A: Turn in anything you edited. You can zip them up or sumbit them individually, either is fine.
+
+
+
+These were already in the doc, but they should be included again.
+
+No customers will attempt to buy negative numbers of anything.
+Don't add customers who ask for 0 items of anything. Don't respond to them either.
+If a customer asks for more than the available inventory, don't add them if they are not already a customer. You must however, respond to them with "Sorry …".
+Use the plural forms of Diapers, Rattles, and Bottles even when talking of 1 of them.
+Use only cout (instead of printf).

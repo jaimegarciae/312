@@ -1,0 +1,76 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/Customer.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/String.h
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/CustomerDB.cpp
+iostream
+-
+cassert
+-
+String.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/String.h
+CustomerDB.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/CustomerDB.h
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/CustomerDB.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/String.h
+Customer.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/Customer.h
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/MemHeap.cpp
+stdio.h
+-
+assert.h
+-
+stdlib.h
+-
+iostream
+-
+algorithm
+-
+MemHeap.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/MemHeap.h
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/MemHeap.h
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/Project7.cpp
+stdio.h
+-
+String.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/String.h
+Customer.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/Customer.h
+CustomerDB.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/CustomerDB.h
+iostream
+-
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/String.h
+stdlib.h
+-
+stdint.h
+-
+
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/main.cpp
+stdio.h
+-
+string
+-
+stdio.h
+-
+stdlib.h
+-
+String.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/String.h
+CustomerDB.h
+/home/jaimegarciae/Documents/312/Projects/7. CRM CPP/CustomerDB.h
+

@@ -106,9 +106,10 @@ double sqrtIt(double x, double low_guess, double high_guess) {
  * accuracy.
  */
 double sqrtRec(double x, double low_guess, double high_guess) {
+	double difference = high_guess - low_guess;
 	double guess = (low_guess + high_guess)/2;
 	// Base case: low guess and high guess are equal, accurate to 15 decimal places
-	if((high_guess - low_guess) < 1e-15){
+	if((difference/guess) <= 1e-15){
 		return guess;
 	}
 
