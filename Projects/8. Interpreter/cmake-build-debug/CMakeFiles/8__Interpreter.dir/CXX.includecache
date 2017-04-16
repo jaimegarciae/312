@@ -1,0 +1,60 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.cpp
+DB.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+iostream
+-
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Input.cpp
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
+stdint.h
+-
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
+stdlib.h
+-
+stdint.h
+-
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.cpp
+handler.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.h
+iostream
+-
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
+DB.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.h
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/main.cpp
+assert.h
+-
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
+handler.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.h
+
