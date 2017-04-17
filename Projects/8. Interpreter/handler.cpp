@@ -3,6 +3,7 @@
 #include "Parse.h"
 #include "String.h"
 #include "DB.h"
+#include "ET.h"
 using namespace std;
 void processKey(DB&);
 void processText();
@@ -18,8 +19,9 @@ void run(){
         //Where keywords are read and handled
         if(next_token_type == NAME){
             processKey(database);
-        } else{
-            cout<< "Error, expecting keyword" << endl;
+        } else if(next_token_type == SYMBOL){ //Encountered comment or error
+            //TODO: handle comments vs errors
+            //Currently assumes comment if not keyword
             skip_line();
         }
         read_next_token();
@@ -27,7 +29,7 @@ void run(){
 }
 
 void processKey(DB& database){
-    string keyword = next_token();
+    String keyword = next_token();
     if(keyword == "text"){
         processText();
     } else if(keyword == "output"){
@@ -46,34 +48,24 @@ void processText(){
 }
 
 void processOut(DB& database){
-    read_next_token();
-    if(next_token_type == NUMBER){
-        int val = token_number_value;
-        cout << val;
-    } else{
-        //Handle expression with expression tree
-        int val = processOperation();
-        cout << val;
-    }
+    ET operation = ET(database);
+    int val = operation.evaluate();
+    cout << val;
 }
 
 void setVariable(DB& database){
-
+    read_next_token();
+    String name = next_token();
+    ET operation = ET(database);
+    int val = operation.evaluate();
+    database.set(val, name);
 }
 
 void initVariable(DB& database){
     read_next_token();
     String name = next_token();
+    ET operation = ET(database);
+    int val = operation.evaluate();
+    database.insert(val, name);
     read_next_token();
-    if(next_token_type == NUMBER){
-        database.insert(token_number_value, name);
-    } else{
-        //Handle expression with expression tree
-        int val = processOperation();
-        cout << val;
-    }
-}
-
-int processOperation(){
-    return 0;
 }

@@ -10,15 +10,15 @@ Variable::Variable(int value, String name) {
 }
 
 DB::~DB(){
-	destroyTree(root);
+	destroyDB(root);
 }
 
 void DB::insert(int value, String name) {
-	Variable *n = find(name);
-	if(n == NULL){ //Variable found, add new Variable to DB tree
-		Variable *newN = new Variable(value, name);
+	Variable *var = find(name);
+	if(var == NULL){ //Variable found, add new Variable to DB tree
+		Variable *newVar = new Variable(value, name);
 		if(root == NULL){
-			root = newN;
+			root = newVar;
 		} else{
 			Variable *parent = NULL;
 			Variable *current = root;
@@ -33,35 +33,52 @@ void DB::insert(int value, String name) {
 			}
 			//Insert new variable in DB
 			if(parent->name > name){
-				parent->left = newN;
+				parent->left = newVar;
 			} else{
-				parent->right = newN;
+				parent->right = newVar;
 			}
-			newN->parent = parent;
+			newVar->parent = parent;
 		}
 	} else{ //Variable found, just modify value
-		n->value = value;
+		cout << "variable " << name.c_str() << " incorrectly re-initialized" << endl;
+		var->value = value;
 	}
-	cout<<"Totally worked bro"<<endl;
 }
 
 Variable* DB::find(String name){
-	Variable* n = root;
-	while(n != NULL){
-		if(n->name > name){
-			n = n->left;
+	Variable* var = root;
+	while(var != NULL && name != var->name){
+		if(var->name > name){
+			var = var->left;
 		} else{
-			n = n->right;
+			var = var->right;
 		}
 	}
-	return n;
+	return var;
 }
 
-void DB::destroyTree(Variable *n){
-	if(n == NULL){
+void DB::set(int value, String name){
+	Variable* var = find(name);
+    if(var == NULL){
+        cout << "variable " << name.c_str() << " not declared" << endl;
+        insert(value, name);
+    }else{
+		var->value = value;
+    }
+}
+
+int DB::get(String name){
+	Variable* var = find(name);
+	if(var){
+		return var->value;
+	}
+}
+
+void DB::destroyDB(Variable *var){
+	if(var == NULL){
 		return;
 	}
-	destroyTree(n->left);
-	destroyTree(n->right);
-	delete n;
+	destroyDB(var->left);
+	destroyDB(var->right);
+	delete var;
 }

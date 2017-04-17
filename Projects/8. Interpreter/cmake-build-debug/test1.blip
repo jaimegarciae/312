@@ -1,6 +1,4 @@
-text "Hello World\n"
-text "the answer is "
-output 42
-text \n
-text oneWord
-
+var x 10
+output x
+var x 5
+output x

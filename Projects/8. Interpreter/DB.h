@@ -16,12 +16,14 @@ class Variable{
 class DB{
   private:
   	Variable *root;
-  	void destroyTree(Variable *n);
+  	void destroyDB(Variable *var);
 
   public:
   	DB(void) : root(NULL) {}
   	void insert(int value, String name);
-  	Variable* find(String var);
+    void set(int value, String name);
+    int get(String name);
+  	Variable* find(String name);
   	~DB(void);
 };
 #endif
