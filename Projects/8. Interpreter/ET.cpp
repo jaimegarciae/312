@@ -26,29 +26,31 @@ void Member::setOp(OpType operatorType){
 }
 
 ET::ET(DB& database){
-	root = new Member();
-	fillET(root, database);
+  this->root = new Member();
+  fillET(this->root, database);
 }
 
 void ET::fillET(Member* m, DB& database){
-	read_next_token();
-	if(next_token_type == NUMBER){
-		m->setVal(token_number_value);
-		return;
-	} else if(next_token_type == NAME){
-		String name = next_token();
-		m->setVal(database.get(name));
-	}
-	String op = next_token();
-	if(op == "!" || op == "~"){ //Only add left child
-		m->setOp(op, UNARY);
-	} else{ //Add both left and right children
-		m->setOp(op, BINARY);
-	}
-	//Ask for help from Shashank
-	m = Member(op);
-	fillET(m->left);
-	fillET(m->right);
+  if (m == null) return;
+  read_next_token();
+  if(next_token_type == NUMBER){
+    m->setVal(token_number_value);
+    return;
+  } else if(next_token_type == NAME){
+    String name = next_token();
+    m->setVal(database.get(name));
+  }
+  String op = next_token();
+  if(op == "!" || op == "~"){
+    m->setOp(op, UNARY);
+  } else{ 
+    m->setOp(op, BINARY);
+    m->right = new Member();
+  }
+  m->left = new Member();
+
+  fillET(m->left);
+  fillET(m->right);
 }
 
 int ET::evaluate(){
