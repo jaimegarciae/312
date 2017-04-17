@@ -6,8 +6,8 @@ using namespace std;
 #include "Parse.h"
 
 enum ET_Type{
-    NUMBER,
-	  OPERATOR
+    NUM,
+	OPERATOR
 };
 
 enum OpType{
@@ -21,22 +21,24 @@ class Member{
     int value;
     String op;
     OpType operatorType;
-    Node*left;
-    Node*right;
+    Member* left;
+    Member* right;
 
     Member(void);
     void setVal(int val);
-    void setOp(OpType operatorType);
+    void setOp(String op, OpType operatorType);
 };
 
 class ET{
   private:
     Member *root;
-    void destroyET(Member *m);
+    void destroyTree(Member* m);
     int eval(Member *m);
+	void fillTree(Member* m, DB& database);
+    int binaryOperation(int first, int second, String op);
+    int unaryOperation(int operand, String op);
   public:
-    ET(void) : root(NULL) {}
-    void fillET();
+    ET(DB& database);
     int evaluate();
     ~ET(void);
 };

@@ -2,36 +2,32 @@
 #include <iostream>
 
 Member::Member(){
-    this->memberType = NULL;
-    this->value = NULL;
-    this->op = NULL;
-    this->operatorType = NULL;
     this->left = NULL;
     this->right = NULL;
 }
 
 void Member::setVal(int value) {
-    this->memberType = NUMBER;
+    this->memberType = NUM;
     this->value = value;
 }
 
-void Member::setOp(OpType operatorType){
+void Member::setOp(String op, OpType operatorType){
     this->memberType = OPERATOR;
     this->op = op;
     this->operatorType = operatorType;
 }
 
-~ET(void){
-	destroyET(root);
+ET::~ET(void){
+	destroyTree(this->root);
 }
 
 ET::ET(DB& database){
   this->root = new Member();
-  fillET(this->root, database);
+  fillTree(this->root, database);
 }
 
-void ET::fillET(Member* m, DB& database){
-  if (m == null) return;
+void ET::fillTree(Member* m, DB& database){
+  if (m == NULL) return;
   read_next_token();
   if(next_token_type == NUMBER){
     m->setVal(token_number_value);
@@ -39,6 +35,7 @@ void ET::fillET(Member* m, DB& database){
   } else if(next_token_type == NAME){
     String name = next_token();
     m->setVal(database.get(name));
+    return;
   }
   String op = next_token();
   if(op == "!" || op == "~"){
@@ -49,8 +46,8 @@ void ET::fillET(Member* m, DB& database){
   }
   m->left = new Member();
 
-  fillET(m->left);
-  fillET(m->right);
+  fillTree(m->left, database);
+  fillTree(m->right, database);
 }
 
 int ET::evaluate(){
@@ -58,16 +55,16 @@ int ET::evaluate(){
 }
 
 int ET::eval(Member *m){
-	if(m->memberType == NUMBER){
+	if(m->memberType == NUM){
 		return m->value;
 	} else if(m->operatorType == BINARY){
-		return BinaryOperation(eval(m->left), eval(m->right), m->op);
+		return binaryOperation(eval(m->left), eval(m->right), m->op);
 	} else{
-		return UnaryOperation(eval(m->left), m->op);
+		return unaryOperation(eval(m->left), m->op);
 	}
 }
 
-int ET::BinaryOperation(int first, int second, String op){
+int ET::binaryOperation(int first, int second, String op){
 	if(op == "+"){ 
 		return (first + second);
 	} else if(op == "-"){ 
@@ -82,7 +79,7 @@ int ET::BinaryOperation(int first, int second, String op){
 		if(first == 0 || second == 0){
 			return 0;
 		} else{
-			return 1
+			return 1;
 		}
 	} else if(op == "||"){
 		if(first != 0 || second != 0){
@@ -105,7 +102,7 @@ int ET::BinaryOperation(int first, int second, String op){
 	}
 }
 
-int ET::UnaryOperation(int operand, String op){
+int ET::unaryOperation(int operand, String op){
 	if(op == "!"){
 		if(operand == 0){
 			return 1;
@@ -113,15 +110,15 @@ int ET::UnaryOperation(int operand, String op){
 			return 0;
 		}
 	} else if(op == "~"){
-		return -first;
+		return -operand;
 	} 
 }
 
-void destroyET(Member *m){
+void ET::destroyTree(Member *m){
 	if(m == NULL){
 		return;
 	}
-	destroyET(m->left);
-	destroyET(m->right);
+	destroyTree(m->left);
+	destroyTree(m->right);
 	delete m;
 }

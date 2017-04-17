@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(SOURCE_FILES
         DB.cpp
         DB.h
+        ET.cpp
         ET.h
         handler.cpp
         handler.h

@@ -81,9 +81,33 @@ CMakeFiles/8__Interpreter.dir/DB.cpp.o.provides: CMakeFiles/8__Interpreter.dir/D
 CMakeFiles/8__Interpreter.dir/DB.cpp.o.provides.build: CMakeFiles/8__Interpreter.dir/DB.cpp.o
 
 
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: CMakeFiles/8__Interpreter.dir/flags.make
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: ../ET.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/8__Interpreter.dir/ET.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/8__Interpreter.dir/ET.cpp.o -c "/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.cpp"
+
+CMakeFiles/8__Interpreter.dir/ET.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/8__Interpreter.dir/ET.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.cpp" > CMakeFiles/8__Interpreter.dir/ET.cpp.i
+
+CMakeFiles/8__Interpreter.dir/ET.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/8__Interpreter.dir/ET.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.cpp" -o CMakeFiles/8__Interpreter.dir/ET.cpp.s
+
+CMakeFiles/8__Interpreter.dir/ET.cpp.o.requires:
+
+.PHONY : CMakeFiles/8__Interpreter.dir/ET.cpp.o.requires
+
+CMakeFiles/8__Interpreter.dir/ET.cpp.o.provides: CMakeFiles/8__Interpreter.dir/ET.cpp.o.requires
+	$(MAKE) -f CMakeFiles/8__Interpreter.dir/build.make CMakeFiles/8__Interpreter.dir/ET.cpp.o.provides.build
+.PHONY : CMakeFiles/8__Interpreter.dir/ET.cpp.o.provides
+
+CMakeFiles/8__Interpreter.dir/ET.cpp.o.provides.build: CMakeFiles/8__Interpreter.dir/ET.cpp.o
+
+
 CMakeFiles/8__Interpreter.dir/handler.cpp.o: CMakeFiles/8__Interpreter.dir/flags.make
 CMakeFiles/8__Interpreter.dir/handler.cpp.o: ../handler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/8__Interpreter.dir/handler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/8__Interpreter.dir/handler.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/8__Interpreter.dir/handler.cpp.o -c "/home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.cpp"
 
 CMakeFiles/8__Interpreter.dir/handler.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/8__Interpreter.dir/handler.cpp.o.provides.build: CMakeFiles/8__Interp
 
 CMakeFiles/8__Interpreter.dir/Input.cpp.o: CMakeFiles/8__Interpreter.dir/flags.make
 CMakeFiles/8__Interpreter.dir/Input.cpp.o: ../Input.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/8__Interpreter.dir/Input.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/8__Interpreter.dir/Input.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/8__Interpreter.dir/Input.cpp.o -c "/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Input.cpp"
 
 CMakeFiles/8__Interpreter.dir/Input.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/8__Interpreter.dir/Input.cpp.o.provides.build: CMakeFiles/8__Interpre
 
 CMakeFiles/8__Interpreter.dir/main.cpp.o: CMakeFiles/8__Interpreter.dir/flags.make
 CMakeFiles/8__Interpreter.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/8__Interpreter.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/8__Interpreter.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/8__Interpreter.dir/main.cpp.o -c "/home/jaimegarciae/Documents/312/Projects/8. Interpreter/main.cpp"
 
 CMakeFiles/8__Interpreter.dir/main.cpp.i: cmake_force
@@ -156,6 +180,7 @@ CMakeFiles/8__Interpreter.dir/main.cpp.o.provides.build: CMakeFiles/8__Interpret
 # Object files for target 8__Interpreter
 8__Interpreter_OBJECTS = \
 "CMakeFiles/8__Interpreter.dir/DB.cpp.o" \
+"CMakeFiles/8__Interpreter.dir/ET.cpp.o" \
 "CMakeFiles/8__Interpreter.dir/handler.cpp.o" \
 "CMakeFiles/8__Interpreter.dir/Input.cpp.o" \
 "CMakeFiles/8__Interpreter.dir/main.cpp.o"
@@ -164,12 +189,13 @@ CMakeFiles/8__Interpreter.dir/main.cpp.o.provides.build: CMakeFiles/8__Interpret
 8__Interpreter_EXTERNAL_OBJECTS =
 
 8__Interpreter: CMakeFiles/8__Interpreter.dir/DB.cpp.o
+8__Interpreter: CMakeFiles/8__Interpreter.dir/ET.cpp.o
 8__Interpreter: CMakeFiles/8__Interpreter.dir/handler.cpp.o
 8__Interpreter: CMakeFiles/8__Interpreter.dir/Input.cpp.o
 8__Interpreter: CMakeFiles/8__Interpreter.dir/main.cpp.o
 8__Interpreter: CMakeFiles/8__Interpreter.dir/build.make
 8__Interpreter: CMakeFiles/8__Interpreter.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable 8__Interpreter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/jaimegarciae/Documents/312/Projects/8. Interpreter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 8__Interpreter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/8__Interpreter.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -178,6 +204,7 @@ CMakeFiles/8__Interpreter.dir/build: 8__Interpreter
 .PHONY : CMakeFiles/8__Interpreter.dir/build
 
 CMakeFiles/8__Interpreter.dir/requires: CMakeFiles/8__Interpreter.dir/DB.cpp.o.requires
+CMakeFiles/8__Interpreter.dir/requires: CMakeFiles/8__Interpreter.dir/ET.cpp.o.requires
 CMakeFiles/8__Interpreter.dir/requires: CMakeFiles/8__Interpreter.dir/handler.cpp.o.requires
 CMakeFiles/8__Interpreter.dir/requires: CMakeFiles/8__Interpreter.dir/Input.cpp.o.requires
 CMakeFiles/8__Interpreter.dir/requires: CMakeFiles/8__Interpreter.dir/main.cpp.o.requires

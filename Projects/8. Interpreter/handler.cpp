@@ -10,18 +10,14 @@ void processText();
 void processOut(DB&);
 void setVariable(DB&);
 void initVariable(DB&);
-int processOperation();
 
 void run(){
     DB database;
     read_next_token();
     while(next_token_type != END){
-        //Where keywords are read and handled
-        if(next_token_type == NAME){
+        if(next_token_type == NAME){ //Encountered keyword
             processKey(database);
-        } else if(next_token_type == SYMBOL){ //Encountered comment or error
-            //TODO: handle comments vs errors
-            //Currently assumes comment if not keyword
+        } else { //Encountered comment
             skip_line();
         }
         read_next_token();
@@ -67,5 +63,4 @@ void initVariable(DB& database){
     ET operation = ET(database);
     int val = operation.evaluate();
     database.insert(val, name);
-    read_next_token();
 }

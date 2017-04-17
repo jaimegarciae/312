@@ -16,6 +16,20 @@ iostream
 String.h
 /home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
 
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.cpp
+ET.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.h
+iostream
+-
+
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
+DB.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
+
 /home/jaimegarciae/Documents/312/Projects/8. Interpreter/Input.cpp
 stdio.h
 -
@@ -47,6 +61,8 @@ String.h
 /home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
 DB.h
 /home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+ET.h
+/home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.h
 
 /home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.h
 

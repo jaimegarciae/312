@@ -5,11 +5,18 @@ CMakeFiles/8__Interpreter.dir/DB.cpp.o
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.cpp
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
+CMakeFiles/8__Interpreter.dir/ET.cpp.o
+ /home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+ /home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.cpp
+ /home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.h
+ /home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
+ /home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
 CMakeFiles/8__Interpreter.dir/Input.cpp.o
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/Input.cpp
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
 CMakeFiles/8__Interpreter.dir/handler.cpp.o
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/DB.h
+ /home/jaimegarciae/Documents/312/Projects/8. Interpreter/ET.h
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/Parse.h
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/String.h
  /home/jaimegarciae/Documents/312/Projects/8. Interpreter/handler.cpp

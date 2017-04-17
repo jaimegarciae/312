@@ -5,10 +5,17 @@ CMakeFiles/8__Interpreter.dir/DB.cpp.o: ../DB.cpp
 CMakeFiles/8__Interpreter.dir/DB.cpp.o: ../DB.h
 CMakeFiles/8__Interpreter.dir/DB.cpp.o: ../String.h
 
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: ../DB.h
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: ../ET.cpp
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: ../ET.h
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: ../Parse.h
+CMakeFiles/8__Interpreter.dir/ET.cpp.o: ../String.h
+
 CMakeFiles/8__Interpreter.dir/Input.cpp.o: ../Input.cpp
 CMakeFiles/8__Interpreter.dir/Input.cpp.o: ../Parse.h
 
 CMakeFiles/8__Interpreter.dir/handler.cpp.o: ../DB.h
+CMakeFiles/8__Interpreter.dir/handler.cpp.o: ../ET.h
 CMakeFiles/8__Interpreter.dir/handler.cpp.o: ../Parse.h
 CMakeFiles/8__Interpreter.dir/handler.cpp.o: ../String.h
 CMakeFiles/8__Interpreter.dir/handler.cpp.o: ../handler.cpp
