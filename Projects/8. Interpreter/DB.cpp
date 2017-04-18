@@ -15,9 +15,11 @@ DB::~DB(){
 
 void DB::insert(int value, String name) {
 	Variable *var = find(name);
-	if(var == NULL){ //Variable found, add new Variable to DB tree
+	if(var == NULL){ 
+		//If Variable is not found, new Variable is initialized and added to DB tree
 		Variable *newVar = new Variable(value, name);
 		if(root == NULL){
+			//First Variable in tree is set as root
 			root = newVar;
 		} else{
 			Variable *parent = NULL;
@@ -31,7 +33,7 @@ void DB::insert(int value, String name) {
 					current = current->right;
 				}
 			}
-			//Insert new variable in DB
+			//Insert new Variable in DB
 			if(parent->name > name){
 				parent->left = newVar;
 			} else{
@@ -39,7 +41,8 @@ void DB::insert(int value, String name) {
 			}
 			newVar->parent = parent;
 		}
-	} else{ //Variable found, just modify value
+	} else{
+		//Variable found, output warning message and update value
 		cout << "variable " << name.c_str() << " incorrectly re-initialized" << endl;
 		var->value = value;
 	}

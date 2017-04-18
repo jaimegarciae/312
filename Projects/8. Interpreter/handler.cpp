@@ -15,9 +15,11 @@ void run(){
     DB database;
     read_next_token();
     while(next_token_type != END){
-        if(next_token_type == NAME){ //Encountered keyword
+        if(next_token_type == NAME){
+            //Keyword encountered, command should be processed
             processKey(database);
-        } else { //Encountered comment
+        } else { 
+            //Comment encountered, rest of the line is ignored
             skip_line();
         }
         read_next_token();

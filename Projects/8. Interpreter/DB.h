@@ -17,13 +17,12 @@ class DB{
   private:
   	Variable *root;
   	void destroyDB(Variable *var);
-
+    Variable* find(String name);
   public:
   	DB(void) : root(NULL) {}
   	void insert(int value, String name);
     void set(int value, String name);
     int get(String name);
-  	Variable* find(String name);
   	~DB(void);
 };
 #endif

@@ -28,7 +28,9 @@ ET::ET(DB& database){
 
 void ET::fillTree(Member* m, DB& database){
   if (m == NULL) return;
+
   read_next_token();
+  // If next member of the operation is a number or a variable, it is added as a leaf to the ET
   if(next_token_type == NUMBER){
     m->setVal(token_number_value);
     return;
@@ -37,6 +39,7 @@ void ET::fillTree(Member* m, DB& database){
     m->setVal(database.get(name));
     return;
   }
+
   String op = next_token();
   if(op == "!" || op == "~"){
     m->setOp(op, UNARY);
@@ -88,17 +91,17 @@ int ET::binaryOperation(int first, int second, String op){
 			return 0;
 		}
 	} else if(op == "<"){
-		return (first < second);
+		return (first < second ? 1 : 0);
 	} else if(op == ">"){
-		return (first > second);
+		return (first > second ? 1 : 0);
 	} else if(op == "=="){
-		return (first == second);
+		return (first == second ? 1 : 0);
 	} else if(op == "!="){
-		return (first != second);
+		return (first != second ? 1 : 0);
 	} else if(op == "<="){
-		return (first <= second);
+		return (first <= second ? 1 : 0);
 	} else if(op == ">="){
-		return (first >+ second);
+		return (first >= second ? 1 : 0);
 	}
 }
 
