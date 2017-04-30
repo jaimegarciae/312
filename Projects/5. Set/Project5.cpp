@@ -116,7 +116,8 @@ void insertSet(Set* self, int x) {
 }
 
 void shiftDown(Set* self, int index){
-	for(int i = 0; i < (self->len -1); i++){
+	//for(int i = 0; i < (self->len -1); i++){
+	for(int i = index; i < (self->len -1); i++){
 		self->elements[i] = self->elements[i+1];
 	}
 	self->len -= 1;

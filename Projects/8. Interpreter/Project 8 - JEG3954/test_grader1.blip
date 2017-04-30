@@ -1,0 +1,10 @@
+text "Hello World\n" // Wass poppin boiii
+text "the answer is "
+output 42
+text \n
+var x 10
+output x
+text \n
+var x 5
+output x
+text \n
