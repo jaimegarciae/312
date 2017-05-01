@@ -47,7 +47,7 @@ void processText(){
 
 void processOut(DB& database){
     ET operation = ET(database);
-    int val = operation.evaluate();
+    int val = operation.evaluate(database);
     cout << val;
 }
 
@@ -55,7 +55,7 @@ void setVariable(DB& database){
     read_next_token();
     String name = next_token();
     ET operation = ET(database);
-    int val = operation.evaluate();
+    int val = operation.evaluate(database);
     database.set(val, name);
 }
 
@@ -63,6 +63,6 @@ void initVariable(DB& database){
     read_next_token();
     String name = next_token();
     ET operation = ET(database);
-    int val = operation.evaluate();
+    int val = operation.evaluate(database);
     database.insert(val, name);
 }

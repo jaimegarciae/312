@@ -7,7 +7,8 @@ using namespace std;
 
 enum ET_Type{
     NUM,
-	OPERATOR
+	OPERATOR,
+    VAR
 };
 
 enum OpType{
@@ -18,6 +19,7 @@ enum OpType{
 class Member{
   public:
     ET_Type memberType;
+    String var;
     int value;
     String op;
     OpType operatorType;
@@ -27,19 +29,20 @@ class Member{
     Member(void);
     void setVal(int val);
     void setOp(String op, OpType operatorType);
+    void setVar(String name);
 };
 
 class ET{
   private:
     Member *root;
     void destroyTree(Member* m);
-    int eval(Member *m);
+    int eval(Member *m, DB& database);
 	void fillTree(Member* m, DB& database);
     int binaryOperation(int first, int second, String op);
     int unaryOperation(int operand, String op);
   public:
     ET(DB& database);
-    int evaluate();
+    int evaluate(DB& database);
     ~ET(void);
 };
 #endif

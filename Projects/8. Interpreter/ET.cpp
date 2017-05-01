@@ -17,6 +17,11 @@ void Member::setOp(String op, OpType operatorType){
     this->operatorType = operatorType;
 }
 
+void Member::setVar(String name){
+	this->memberType = VAR;
+	this->var = name;
+}
+
 ET::~ET(void){
 	destroyTree(this->root);
 }
@@ -36,7 +41,7 @@ void ET::fillTree(Member* m, DB& database){
     return;
   } else if(next_token_type == NAME){
     String name = next_token();
-    m->setVal(database.get(name));
+    m->setVar(name);
     return;
   }
 
@@ -53,17 +58,20 @@ void ET::fillTree(Member* m, DB& database){
   fillTree(m->right, database);
 }
 
-int ET::evaluate(){
-	return eval(root);
+int ET::evaluate(DB& database){
+	return eval(root, database);
 }
 
-int ET::eval(Member *m){
+int ET::eval(Member *m, DB& database){
 	if(m->memberType == NUM){
 		return m->value;
-	} else if(m->operatorType == BINARY){
-		return binaryOperation(eval(m->left), eval(m->right), m->op);
+	} else if(m->memberType == VAR){
+		return database.get(m->var);
+
+	}else if(m->operatorType == BINARY){
+		return binaryOperation(eval(m->left, database), eval(m->right, database), m->op);
 	} else{
-		return unaryOperation(eval(m->left), m->op);
+		return unaryOperation(eval(m->left, database), m->op);
 	}
 }
 
