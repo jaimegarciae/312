@@ -7,7 +7,7 @@ enum TokenType {
 	SYMBOL,
 	KEYWORD, // not currently used or supported by Parse.h/Input.cpp
 	NAME,
-	STRING,
+	STRING,  // not currently used or supported by Parse.h/Input.cpp
 
 	END, // special marker for end of input
 

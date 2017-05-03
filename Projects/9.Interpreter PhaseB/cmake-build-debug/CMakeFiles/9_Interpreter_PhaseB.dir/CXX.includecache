@@ -1,0 +1,94 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/DB.cpp
+DB.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/DB.h
+iostream
+-
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/DB.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/String.h
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/ET.cpp
+ET.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/ET.h
+iostream
+-
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/ET.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/String.h
+DB.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/DB.h
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Parse.h
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Input.cpp
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Parse.h
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/PT.cpp
+PT.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/PT.h
+iostream
+-
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/PT.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/String.h
+DB.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/DB.h
+ET.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/ET.h
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Parse.h
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Parse.h
+stdint.h
+-
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/String.h
+stdlib.h
+-
+stdint.h
+-
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/handler.cpp
+handler.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/handler.h
+iostream
+-
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Parse.h
+String.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/String.h
+DB.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/DB.h
+ET.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/ET.h
+PT.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/PT.h
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/handler.h
+
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/main.cpp
+assert.h
+-
+Parse.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/Parse.h
+handler.h
+/home/jaimegarciae/Documents/312/Projects/9.Interpreter PhaseB/handler.h
+
