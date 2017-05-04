@@ -8,7 +8,7 @@
 #include "handler.h"
 
 int main(){
-	set_input("test2.blip");
+	set_input("test10.blip");
     run();
 	return 0;
 }

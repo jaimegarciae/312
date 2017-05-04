@@ -10,11 +10,12 @@ class Node{
   public:
     String key;
     Node* next;
-    Node* loop;
-    Node* other;
+    Node* alternate;
+    Node* loopEnd;
     String var;
     ET* operation;
     String output;
+
     //TODO: pointer to function
 
     Node(void);
@@ -25,7 +26,8 @@ class PT{
     Node *root;
     void destroyTree(Node* n);
     void fillTree(void);
-    Node* addKey(Node* current);
+    Node* addKey(Node* n);
+    Node* addLoop(Node* n);
   public:
     PT(void);
     ~PT(void);

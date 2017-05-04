@@ -3,9 +3,8 @@
 
 Node::Node(){
     this->next = NULL;
-    this->loop = NULL;
     this->operation = NULL;
-    this->other = NULL;
+    this->alternate = NULL;
 }
 
 PT::~PT(void){
@@ -42,7 +41,6 @@ Node* PT::addKey(Node* n){
     if(keyword == "text"){
        read_next_token();
        n->output = next_token();
-       return n;
     } else if(keyword == "output"){
         n->operation = new ET();
     } else if(keyword == "set" || keyword == "var"){
@@ -51,14 +49,41 @@ Node* PT::addKey(Node* n){
         n->var = name;
         n->operation = new ET();
     } else if(keyword == "do"){
-    	//TODO: add loop to tree (link od to do)
+        return addLoop(n);
     } else if(keyword == "if"){
-    	//TODO: add conditional to tree
+    	//return addConditional(n);
     } else{
         cout<<"This is something different: " << keyword.c_str() <<endl;
     }
     return n;
 }
+
+Node* PT::addLoop(Node* n){
+    n->operation = new ET();
+    Node* start = n;
+    n->next = new Node();
+    n = n->next;
+
+    read_next_token();
+    String keyword = next_token();
+    while(keyword != "od"){
+        if(next_token_type == NAME){
+            //Keyword encountered, command should be added to Parse Tree inside loop
+            n = addKey(n);
+            n->next = new Node();
+            n = n->next;
+        } else { 
+            //Comment encountered, rest of the line is ignored
+            skip_line();
+        }
+        read_next_token();
+        keyword = next_token();
+    }
+    start->loopEnd = n;
+    n->key = keyword;
+    return n;
+}
+
 
 Node* PT::getRoot(void){
     return this->root;
