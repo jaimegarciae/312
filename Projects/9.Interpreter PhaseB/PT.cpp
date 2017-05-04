@@ -94,22 +94,26 @@ Node* PT::addCond(Node* n){
     String keyword = next_token();
 
     Node* temp = NULL;
-    while(keyword != "fi" && keyword != "else"){
-        if(next_token_type == NAME){
-            //Keyword encountered, command should be added to Parse Tree inside loop
-            n = addKey(n);
-            String check = peek_next_token();
-            if(check == "else"){
-                temp = n;
+    if(keyword != "fi" && keyword != "else"){
+        while(keyword != "fi" && keyword != "else"){
+            if(next_token_type == NAME){
+                //Keyword encountered, command should be added to Parse Tree inside loop
+                n = addKey(n);
+                String check = peek_next_token();
+                if(check == "else"){
+                    temp = n;
+                }
+                n->next = new Node();
+                n = n->next;
+            } else { 
+                //Comment encountered, rest of the line is ignored
+                skip_line();
             }
-            n->next = new Node();
-            n = n->next;
-        } else { 
-            //Comment encountered, rest of the line is ignored
-            skip_line();
+            read_next_token();
+            keyword = next_token();
         }
-        read_next_token();
-        keyword = next_token();
+    } else{
+        temp = cond;
     }
 
     if(keyword == "else"){

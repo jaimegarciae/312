@@ -69,10 +69,11 @@ Node* doLoop(Node* current, DB& database){
 }
 
 Node* doCond(Node* current, DB& database){
-    if(!current->operation->evaluate(database)){
-        current = current->alternate;
-    } else{
+    int temp = current->operation->evaluate(database);
+    if(current->operation->evaluate(database)){
         current = current->next;
+    } else{
+        current = current->alternate;
     }
     
     while(current->key != "fi"){
