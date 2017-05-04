@@ -51,9 +51,9 @@ Node* PT::addKey(Node* n){
     } else if(keyword == "do"){
         return addLoop(n);
     } else if(keyword == "if"){
-    	//return addConditional(n);
+    	return addCond(n);
     } else{
-        cout<<"This is something different: " << keyword.c_str() <<endl;
+        cout<<"Code doesn't work for functions and calls :D hehehe " << keyword.c_str() <<endl;
     }
     return n;
 }
@@ -84,6 +84,63 @@ Node* PT::addLoop(Node* n){
     return n;
 }
 
+Node* PT::addCond(Node* n){
+    n->operation = new ET();
+    Node* cond = n;
+    n->next = new Node();
+    n = n->next;
+
+    read_next_token();
+    String keyword = next_token();
+
+    Node* temp = NULL;
+    while(keyword != "fi" && keyword != "else"){
+        if(next_token_type == NAME){
+            //Keyword encountered, command should be added to Parse Tree inside loop
+            n = addKey(n);
+            String check = peek_next_token();
+            if(check == "else"){
+                temp = n;
+            }
+            n->next = new Node();
+            n = n->next;
+        } else { 
+            //Comment encountered, rest of the line is ignored
+            skip_line();
+        }
+        read_next_token();
+        keyword = next_token();
+    }
+
+    if(keyword == "else"){
+        cond->alternate = n;
+
+        read_next_token();
+        keyword = next_token();
+        while(keyword != "fi"){
+            if(next_token_type == NAME){
+                //Keyword encountered, command should be added to Parse Tree inside loop
+                n = addKey(n);
+                n->next = new Node();
+                n = n->next;
+            } else { 
+                //Comment encountered, rest of the line is ignored
+                skip_line();
+            }
+            read_next_token();
+            keyword = next_token();
+        }
+    } else{
+        cond->alternate = n;
+    }
+
+    if(temp){
+        temp->next = n;
+    }
+
+    n->key = keyword;
+    return n;
+}
 
 Node* PT::getRoot(void){
     return this->root;

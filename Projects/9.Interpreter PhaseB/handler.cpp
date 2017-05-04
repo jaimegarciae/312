@@ -11,6 +11,7 @@ void processOut(Node*, DB&);
 void setVariable(Node*, DB&);
 void initVariable(Node*, DB&);
 Node* doLoop(Node*, DB&);
+Node* doCond(Node* current, DB& database);
 
 void run(){
     DB database;
@@ -33,8 +34,9 @@ Node* processKey(Node* current, DB& database){
         initVariable(current, database);
     } else if(current->key == "do"){
         current = doLoop(current, database);
+    } else if(current->key == "if"){
+        current = doCond(current, database);
     }
-    //TODO: conditionals
     return current;
 }
 
@@ -64,4 +66,18 @@ Node* doLoop(Node* current, DB& database){
         current = doLoop(loopStart,database);
     }
     return loopStart->loopEnd;
+}
+
+Node* doCond(Node* current, DB& database){
+    if(!current->operation->evaluate(database)){
+        current = current->alternate;
+    } else{
+        current = current->next;
+    }
+    
+    while(current->key != "fi"){
+        current = processKey(current, database);
+        current = current->next;
+    }
+    return current;
 }

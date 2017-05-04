@@ -28,6 +28,7 @@ class PT{
     void fillTree(void);
     Node* addKey(Node* n);
     Node* addLoop(Node* n);
+    Node* addCond(Node* n);
   public:
     PT(void);
     ~PT(void);
